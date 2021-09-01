@@ -48,7 +48,7 @@ func randomQuote() error {
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("status code : %v\n for chuck norris joke", resp.StatusCode)
+		return fmt.Errorf("status code : %v\n for got quote", resp.StatusCode)
 	}
 
 	var quote Quote

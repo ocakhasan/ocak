@@ -9,11 +9,6 @@ import (
 	"github.com/ocakhasan/ocak/cmd"
 )
 
-type coordinates struct {
-	lat float32
-	lon float32
-}
-
 type weatherInfo struct {
 	Main        string
 	Description string
@@ -27,7 +22,6 @@ type main struct {
 }
 
 type WeatherData struct {
-	Coord   coordinates    `json:"coord"`
 	Weather []*weatherInfo `json:"weather"`
 	Main    main           `json:"main"`
 	Name    string         `json:"name"`
@@ -41,20 +35,20 @@ func GetWeatherData(city string) error {
 	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", city, config.OpenWeather)
 	resp, err := http.Get(url)
 	if err != nil {
-		return fmt.Errorf("There is an error fetching openweathermap %v", err)
+		return fmt.Errorf("there is an error fetching openweathermap %v", err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("Status Code is %d for url %s", resp.StatusCode, url)
+		return fmt.Errorf("status Code is %d for url %s", resp.StatusCode, url)
 	}
 	var data WeatherData
 	err = json.NewDecoder(resp.Body).Decode(&data)
 	if err != nil {
-		return fmt.Errorf("There is error in decoding data: %v", err)
+		return fmt.Errorf("there is error in decoding data: %v", err)
 	}
 
 	if err := Report.Execute(os.Stdout, data); err != nil {
-		return fmt.Errorf("template error: %v\n", err)
+		return fmt.Errorf("template error: %v", err)
 	}
 	return nil
 }
