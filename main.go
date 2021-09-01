@@ -17,6 +17,7 @@ package main
 
 import (
 	"github.com/ocakhasan/ocak/cmd"
+	_ "github.com/ocakhasan/ocak/cmd/got"
 	_ "github.com/ocakhasan/ocak/cmd/imdb"
 	_ "github.com/ocakhasan/ocak/cmd/joke"
 	_ "github.com/ocakhasan/ocak/cmd/weather"
