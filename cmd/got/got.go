@@ -15,9 +15,10 @@ var imdbCmd = &cobra.Command{
 	Use:   "got",
 	Short: "game of thrones demeçleri",
 	Run: func(cmd *cobra.Command, args []string) {
-		err := randomQuote()
-		if err != nil {
+
+		if err := randomQuote(); err != nil {
 			printer.Error(os.Stderr, "%v\n", err)
+			os.Exit(1)
 		}
 	},
 }

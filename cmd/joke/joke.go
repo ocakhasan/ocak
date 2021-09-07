@@ -15,9 +15,9 @@ var imdbCmd = &cobra.Command{
 	Use:   "joke",
 	Short: "yap bakayım şakanı",
 	Run: func(cmd *cobra.Command, args []string) {
-		err := randomJoke()
-		if err != nil {
+		if err := randomJoke(); err != nil {
 			printer.Error(os.Stderr, "%v\n", err)
+			os.Exit(1)
 		}
 	},
 }

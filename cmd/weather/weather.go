@@ -18,6 +18,7 @@ var weatherCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := GetWeatherData(city); err != nil {
 			printer.Error(os.Stderr, err.Error())
+			os.Exit(1)
 		}
 	},
 }
