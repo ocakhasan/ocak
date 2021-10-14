@@ -13,7 +13,7 @@ import (
 
 var imdbCmd = &cobra.Command{
 	Use:   "joke",
-	Short: "yap bakayım şakanı",
+	Short: "tell me your joke then",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := randomJoke(); err != nil {
 			printer.Error(os.Stderr, "%v\n", err)

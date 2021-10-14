@@ -13,7 +13,7 @@ import (
 
 var imdbCmd = &cobra.Command{
 	Use:   "got",
-	Short: "game of thrones demeçleri",
+	Short: "quotes from game of thrones",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		if err := randomQuote(); err != nil {
@@ -39,7 +39,7 @@ type Character struct {
 }
 
 func (q Quote) String() string {
-	return fmt.Sprintf(`%v demiş ki: %v`, q.Character.Name, q.Sentence)
+	return fmt.Sprintf(`%v said: %v`, q.Character.Name, q.Sentence)
 }
 
 func randomQuote() error {

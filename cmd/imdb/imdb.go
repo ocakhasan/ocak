@@ -12,7 +12,7 @@ var movie string
 
 var imdbCmd = &cobra.Command{
 	Use:   "imdb",
-	Short: "film ara",
+	Short: "search movies through imdb",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := findMovie(movie); err != nil {
 			printer.Error(os.Stdout, err.Error())

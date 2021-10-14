@@ -14,7 +14,7 @@ var city string
 // weatherCmd represents the weather command
 var weatherCmd = &cobra.Command{
 	Use:   "weather",
-	Short: "hava durumu gururla sunar",
+	Short: "what's the weather like",
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := GetWeatherData(city); err != nil {
 			printer.Error(os.Stderr, err.Error())
